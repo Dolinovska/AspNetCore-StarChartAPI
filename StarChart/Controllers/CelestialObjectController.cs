@@ -44,7 +44,7 @@ namespace StarChart.Controllers
         public IActionResult GetByName(string name)
         {
             var celestialObjects = _context.CelestialObjects
-                .Include(x => x.Satellites)
+                .Where(e => e.Name == name)
                 .ToList();
 
             if(!celestialObjects.Any()) 
